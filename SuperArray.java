@@ -93,6 +93,13 @@ public class SuperArray {
     data = newArray;
   }
 
-  
+  public boolean contains(String target) {
+    for (int i = 0; i < size(); i++) {
+      if(target.equals(data[i])){
+        return true;
+      }
+    }
+    return false;
+  }
 
 }
