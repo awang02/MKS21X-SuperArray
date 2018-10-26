@@ -18,7 +18,6 @@ public class SuperArray {
     if (this.size == 0) {
       return true;
     }
+    return false;
   }
-
-  
 }
