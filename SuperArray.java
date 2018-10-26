@@ -102,4 +102,24 @@ public class SuperArray {
     return false;
   }
 
+  public int indexOf(String target) {
+    for (int i = 0; i < size(); i++) {
+      if(target.equals(data[i])){
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  public int lastIndexOf(String target) {
+    int l = -1;
+    for (int i = 0; i < size(); i++){
+      if(target.equals(data[i])){
+        l = i;
+      }
+    }
+    return l;
+  }
+
+  
 }
