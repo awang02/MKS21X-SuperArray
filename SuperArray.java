@@ -49,4 +49,19 @@ public class SuperArray {
     return rtn;
   }
 
+  public String toStringDebug() {
+    String rtn = "[";
+    for (int i = 0; i < data.length; i++) {
+      if (i < data.length - 1) {
+        rtn += data[i] + ", ";
+      }
+      else {
+        rtn += data[i] + "]";
+      }
+    }
+    return rtn;
+  }
+
+
+
 }
