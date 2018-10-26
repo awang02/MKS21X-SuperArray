@@ -3,21 +3,50 @@ public class SuperArray {
   private int size;
 
   public SuperArray () {
-    String[] data = new String[10];
+    data = new String[10];
   }
 
-  public static void clear() {
-    String[] data = {};
+  public void clear(){
+    size = 0;
   }
 
   public int size() {
-    return data.length;
+    return size;
   }
 
   public boolean isEmpty() {
-    if (this.size == 0) {
+    if (size == 0) {
       return true;
     }
     return false;
   }
+
+  public boolean add(String s) {
+    if (data.length > size()) {
+      data[size] = s;
+      size++ ;
+    }
+    else {
+      //resize();
+      add(s);
+    }
+    return true;
+  }
+
+  public String toString() {
+    String rtn = "[";
+    if (size() == 0){
+      rtn += "]";
+    }
+    for (int i = 0; i < size(); i++) {
+      if (i < size() - 1) {
+        rtn += data[i] + ", ";
+      }
+      else {
+        rtn += data[i] + "]";
+      }
+    }
+    return rtn;
+  }
+
 }
