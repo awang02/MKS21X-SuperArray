@@ -62,6 +62,28 @@ public class SuperArray {
     return rtn;
   }
 
+  public String get(int idx){
+    if (idx < 0 || idx >= size()) {
+      System.err.println("Error: idx out of range");
+      return null;
+    }
+    else {
+      return data[idx];
+    }
+  }
+
+  public String set(int idx, String str){
+    String previous = "";
+    if (idx < 0 || idx >= size()) {
+      System.err.print("Error: idx out of range");
+      return null;
+    }
+    else {
+      previous = data[idx];
+      data[idx] = str;
+    }
+    return previous;
+  }
 
 
 }
