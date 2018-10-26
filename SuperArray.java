@@ -86,8 +86,8 @@ public class SuperArray {
   }
 
   private void resize() {
-    String newArray[] = new String[2*data.length + 1];
-    for (int x = 0; x < size(); x++){
+    String newArray[] = new String[2*data.length];
+    for (int x = 0; x < size(); x++) {
       newArray[x] = data[x];
     }
     data = newArray;
@@ -95,7 +95,7 @@ public class SuperArray {
 
   public boolean contains(String target) {
     for (int i = 0; i < size(); i++) {
-      if(target.equals(data[i])){
+      if(target.equals(data[i])) {
         return true;
       }
     }
@@ -104,7 +104,7 @@ public class SuperArray {
 
   public int indexOf(String target) {
     for (int i = 0; i < size(); i++) {
-      if(target.equals(data[i])){
+      if(target.equals(data[i])) {
         return i;
       }
     }
@@ -113,12 +113,29 @@ public class SuperArray {
 
   public int lastIndexOf(String target) {
     int l = -1;
-    for (int i = 0; i < size(); i++){
-      if(target.equals(data[i])){
+    for (int i = 0; i < size(); i++) {
+      if(target.equals(data[i])) {
         l = i;
       }
     }
     return l;
+  }
+
+  public void add(int idx, String str) {
+    if (idx < 0 || idx > size()) {
+      System.out.println("Error: idx out of range");
+    }
+    else {
+      for (int i = size() + 1; i >= idx; i -= 1) {
+        if (i > idx) {
+          data[i] = data[i-1];
+        }
+        else{
+          data[i] = str;
+        }
+      }
+      size ++;
+    }
   }
 
   
