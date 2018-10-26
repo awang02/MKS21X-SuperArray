@@ -27,7 +27,7 @@ public class SuperArray {
       size++ ;
     }
     else {
-      //resize();
+      resize();
       add(s);
     }
     return true;
@@ -85,5 +85,14 @@ public class SuperArray {
     return previous;
   }
 
+  private void resize() {
+    String newArray[] = new String[2*data.length + 1];
+    for (int x = 0; x < size(); x++){
+      newArray[x] = data[x];
+    }
+    data = newArray;
+  }
+
+  
 
 }
