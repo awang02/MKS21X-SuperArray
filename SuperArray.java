@@ -138,5 +138,32 @@ public class SuperArray {
     }
   }
 
-  
+  public String remove(int idx) {
+    String previous = data[idx];
+    if (idx < 0 || idx > size()){
+      System.out.println("Error: idx out of range");
+      return null;
+    }
+    else{
+      for (int i = idx; i <= size(); i += 1) {
+        if (i == size()) {
+        data[i] = null;
+        }
+        else {
+          data[i] = data[i+1];
+        }
+      }
+      size--;
+    }
+    return previous;
+  }
+
+  public boolean remove(String str) {
+    int idx = indexOf(str);
+    if (idx == -1){
+      return false;
+    }
+    remove(idx);
+    return true;
+  }
 }
