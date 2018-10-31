@@ -43,18 +43,15 @@ public class SuperArray {
 
   public String toString() {
     String rtn = "[";
-    if (size() == 0){
-      rtn += "]";
-    }
     for (int i = 0; i < size(); i++) {
       if (i < size() - 1) {
         rtn += data[i] + ", ";
       }
       else {
-        rtn += data[i] + "]";
+        rtn += data[i];
       }
     }
-    return rtn;
+    return rtn + "]";
   }
 
   public String toStringDebug() {
@@ -64,10 +61,10 @@ public class SuperArray {
         rtn += data[i] + ", ";
       }
       else {
-        rtn += data[i] + "]";
+        rtn += data[i];
       }
     }
-    return rtn;
+    return rtn + "]";
   }
 
   public String get(int idx){
@@ -126,17 +123,14 @@ public class SuperArray {
     if (idx < 0 || idx > size()) {
       throw new IndexOutOfBoundsException();
     }
-    else {
-      for (int i = size() + 1; i >= idx; i -= 1) {
-        if (i > idx) {
-          data[i] = data[i-1];
-        }
-        else{
-          data[i] = str;
-        }
-      }
-      size ++;
+    if (size == data.length){
+      resize();
     }
+    for (int x = size; x >= idx; x--) {
+      data[x] = data[x - 1];
+    }
+    size++;
+    data[idx] = str;
   }
 
   public String remove(int idx) {
