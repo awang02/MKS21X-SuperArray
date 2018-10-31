@@ -6,6 +6,14 @@ public class SuperArray {
     data = new String[10];
   }
 
+  public SuperArray(int startingCapacity) {
+    if(startingCapacity < 0){
+      throw new IllegalArgumentException();
+    }
+    data = new String[startingCapacity];
+    this.clear();
+  }
+
   public void clear(){
     size = 0;
   }
@@ -63,30 +71,23 @@ public class SuperArray {
   }
 
   public String get(int idx){
-    if (idx < 0 || idx >= size()) {
-      System.err.println("Error: idx out of range");
-      return null;
+    if (index < 0 || index >= size()) {
+      throw new IndexOutOfBoundsException();
     }
-    else {
-      return data[idx];
-    }
+    return data[index];
   }
 
   public String set(int idx, String str){
-    String previous = "";
-    if (idx < 0 || idx >= size()) {
-      System.err.print("Error: idx out of range");
-      return null;
+    if (index < 0 || index >= size()) {
+      throw new IndexOutOfBoundsException();
     }
-    else {
-      previous = data[idx];
-      data[idx] = str;
-    }
+    String previous = data[idx];
+    data[idx] = str;
     return previous;
   }
 
   private void resize() {
-    String newArray[] = new String[2*data.length];
+    String newArray[] = new String[2*data.length + 1];
     for (int x = 0; x < size(); x++) {
       newArray[x] = data[x];
     }
@@ -122,8 +123,8 @@ public class SuperArray {
   }
 
   public void add(int idx, String str) {
-    if (idx < 0 || idx > size()) {
-      System.out.println("Error: idx out of range");
+    if (index < 0 || index > size()) {
+      throw new IndexOutOfBoundsException();
     }
     else {
       for (int i = size() + 1; i >= idx; i -= 1) {
@@ -139,13 +140,12 @@ public class SuperArray {
   }
 
   public String remove(int idx) {
-    String previous = data[idx];
-    if (idx < 0 || idx > size()){
-      System.out.println("Error: idx out of range");
-      return null;
+    if (index < 0 || index >= size()){
+      throw new IndexOutOfBoundsException();
     }
     else{
-      for (int i = idx; i <= size(); i += 1) {
+      String previous = data[idx];
+      for (int i = idx; i <= size(); i++) {
         if (i == size()) {
         data[i] = null;
         }
