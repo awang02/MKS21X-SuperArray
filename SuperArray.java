@@ -71,14 +71,14 @@ public class SuperArray {
   }
 
   public String get(int idx){
-    if (index < 0 || index >= size()) {
+    if (idx < 0 || idx >= size()) {
       throw new IndexOutOfBoundsException();
     }
-    return data[index];
+    return data[idx];
   }
 
   public String set(int idx, String str){
-    if (index < 0 || index >= size()) {
+    if (idx < 0 || idx >= size()) {
       throw new IndexOutOfBoundsException();
     }
     String previous = data[idx];
@@ -123,7 +123,7 @@ public class SuperArray {
   }
 
   public void add(int idx, String str) {
-    if (index < 0 || index > size()) {
+    if (idx < 0 || idx > size()) {
       throw new IndexOutOfBoundsException();
     }
     else {
@@ -140,22 +140,20 @@ public class SuperArray {
   }
 
   public String remove(int idx) {
-    if (index < 0 || index >= size()){
+    if (idx < 0 || idx >= size()) {
       throw new IndexOutOfBoundsException();
     }
-    else{
-      String previous = data[idx];
-      for (int i = idx; i <= size(); i++) {
-        if (i == size()) {
-        data[i] = null;
-        }
-        else {
-          data[i] = data[i+1];
-        }
+    String oldidx = data[idx];
+    for (int i = idx; i <= size(); i++) {
+      if (i == size()) {
+      data[i] = null;
       }
-      size--;
+      else {
+        data[i] = data[i+1];
+      }
     }
-    return previous;
+    size--;
+    return oldidx;
   }
 
   public boolean remove(String str) {
